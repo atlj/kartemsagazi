@@ -3,6 +3,8 @@ import client from "@services/graphql";
 import { getPlaces } from "@services/graphql/queries/place";
 import { GetServerSideProps } from "next";
 import React, { useMemo, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 type Props = {
     places: Place[];
@@ -31,19 +33,31 @@ const Home = ({ places }: Props) => {
 
     return (
         <div className="bg-dark-400 pt-10 pl-5 pr-5 min-h-screen flex flex-col ">
+            <div className="relative self-center mb-8 w-2/3 max-w-xs ">
+                <Image
+                    src="/res/EmsaGazi.png"
+                    width="316"
+                    height="100"
+                    layout="responsive"
+                />
+            </div>
             <SearchBar onChange={setSearchString} />
             <div className="grid grid-cols-2 mt-8 md:grid-cols-4 sm:grid-cols-3 lg:grid-cols-6 gap-3 gap-y-4">
                 {data.map((place) => (
-                    <Card
-                        className="w-auto h-60 md:max-w-xs"
-                        {...{
-                            description: place.description,
-                            discount: place.discount,
-                            district: place.location.district,
-                            title: place.name,
-                            url: place.image.url,
-                        }}
-                    />
+                    <Link href={"/" + place.id}>
+                        <a>
+                            <Card
+                                className="w-auto h-60 md:max-w-xs"
+                                {...{
+                                    description: place.description,
+                                    discount: place.discount,
+                                    district: place.location.district,
+                                    title: place.name,
+                                    url: place.image.url,
+                                }}
+                            />
+                        </a>
+                    </Link>
                 ))}
             </div>
         </div>

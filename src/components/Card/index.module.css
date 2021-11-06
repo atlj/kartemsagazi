@@ -8,3 +8,12 @@
 .labelText {
     font-size: 10px;
 }
+
+.container {
+    filter: drop-shadow(-4px 4px 15px rgba(0, 0, 0, 0.25));
+    transition: all 0.3s ease;
+}
+
+.container:hover {
+    transform: scale(1.05);
+}

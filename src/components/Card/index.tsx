@@ -29,6 +29,7 @@ function Card({
             key={key}
             className={cn(
                 "bg-dark-500 p-2 rounded-lg flex-col flex justify-between ",
+                styles.container,
                 className,
             )}
         >

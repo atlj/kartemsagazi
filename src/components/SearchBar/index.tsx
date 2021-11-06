@@ -13,6 +13,7 @@ function SearchBar({ onChange, className }: Props) {
         <div
             className={cn(
                 "bg-dark-500 flex items-center pt-3 pb-3 pl-3 pr-3 rounded-lg w-full max-w-lg  self-center ",
+                styles.container,
                 className,
             )}
         >
