@@ -1,8 +1,8 @@
 module.exports = {
     client: {
         service: {
-            name: "SpaceX",
-            url: "https://api.spacex.land/graphql/",
+            name: "Strapi",
+            url: "https://kart-emsagazi.herokuapp.com/graphql",
         },
     },
 };
