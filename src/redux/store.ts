@@ -1,9 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 
-import rootReducer from "./reducers";
+const reducer = combineReducers({});
 
-const store = configureStore({ reducer: rootReducer });
+const store = configureStore({ reducer: reducer });
 
 export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
