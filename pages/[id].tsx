@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import Router from "next/router";
-import { GetServerSideProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import client from "@services/graphql";
-import { getPlaceById } from "@services/graphql/queries/place";
+import { getPlaceById, getPlaces } from "@services/graphql/queries/place";
 import Image from "next/image";
 
 import * as Icons from "@components/icons";
@@ -17,6 +17,8 @@ function PlacePage({ place }: Props) {
             Router.push("/");
         }
     }, [place]);
+
+    console.log(place);
 
     return (
         <div className="bg-dark-400 pt-5 pl-5 pr-5 min-h-screen flex flex-col">
@@ -71,9 +73,7 @@ function PlacePage({ place }: Props) {
     );
 }
 
-export const getServerSideProps: GetServerSideProps<Props> = async (
-    context,
-) => {
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
     const { data } = await client.query<
         { place: Place | null },
         { id: string }
@@ -82,6 +82,17 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
         variables: { id: context.params.id as string },
     });
     return { props: { place: data.place } };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    const { data } = await client.query<{ places: Place[] }>({
+        query: getPlaces,
+    });
+
+    const paths = data.places.map((place) => ({
+        params: { id: place.id },
+    }));
+    return { paths, fallback: false };
 };
 
 export default PlacePage;

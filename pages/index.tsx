@@ -1,7 +1,7 @@
 import { Card, SearchBar } from "@components";
 import client from "@services/graphql";
 import { getPlaces } from "@services/graphql/queries/place";
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -44,7 +44,7 @@ const Home = ({ places }: Props) => {
             <SearchBar onChange={setSearchString} />
             <div className="grid grid-cols-2 mt-8 md:grid-cols-4 sm:grid-cols-3 lg:grid-cols-6 gap-3 gap-y-4">
                 {data.map((place) => (
-                    <Link href={"/" + place.id}>
+                    <Link key={place.id} href={"/" + place.id}>
                         <a>
                             <Card
                                 className="w-auto h-60 md:max-w-xs"
@@ -64,7 +64,7 @@ const Home = ({ places }: Props) => {
     );
 };
 
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
     const { data } = await client.query<{ places: Place[] }>({
         query: getPlaces,
     });

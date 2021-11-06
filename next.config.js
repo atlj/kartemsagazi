@@ -3,6 +3,6 @@ const withPlugins = require("next-compose-plugins");
 
 module.exports = withPlugins([], {
     images: {
-        domains: ["res.cloudinary.com"],
+        domains: ["res.cloudinary.com", "media.giphy.com"],
     },
 });
