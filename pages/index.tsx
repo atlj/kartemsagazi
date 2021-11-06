@@ -13,10 +13,10 @@ const Home = ({ places }: Props) => {
 
     return (
         <div className="bg-dark-400 pt-10 pl-5 pr-5 min-h-screen">
-            <div className="grid grid-cols-2 gap-3 gap-y-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 sm:grid-cols-3 lg:grid-cols-6 gap-3 gap-y-4">
                 {places.map((place) => (
                     <Card
-                        className="w-auto h-60"
+                        className="w-auto h-60 md:max-w-xs"
                         {...{
                             description: place.description,
                             discount: place.discount,
