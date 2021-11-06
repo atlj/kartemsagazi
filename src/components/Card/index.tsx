@@ -12,6 +12,7 @@ type Props = {
     description: string;
     district: string;
     discount: string;
+    key?: string;
 };
 
 function Card({
@@ -21,9 +22,11 @@ function Card({
     district,
     discount,
     className,
+    key,
 }: Props) {
     return (
         <div
+            key={key}
             className={cn(
                 "bg-dark-500 p-2 rounded-lg flex-col flex justify-between ",
                 className,

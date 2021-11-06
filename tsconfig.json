@@ -14,7 +14,7 @@
         "isolatedModules": true,
         "jsx": "preserve",
         "baseUrl": ".",
-        "typeRoots": ["src/index.d.ts"],
+        "typeRoots": ["./src/index.d.ts"],
 
         "paths": {
             "@components/*": ["src/components/*"],

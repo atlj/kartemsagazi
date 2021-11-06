@@ -2,14 +2,13 @@ import React from "react";
 import { AppProps } from "next/app";
 import "tailwindcss/tailwind.css";
 import "@styles/global.scss";
-import { initializeApollo } from "@services/graphql";
 import { ApolloProvider } from "@apollo/client";
+import client from "@services/graphql";
 import { Provider } from "react-redux";
 import Head from "next/head";
 import store from "@redux/store";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
-    const apolloClient = initializeApollo();
     return (
         <>
             <Head>
@@ -23,7 +22,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
                     rel="stylesheet"
                 />
             </Head>
-            <ApolloProvider client={apolloClient}>
+            <ApolloProvider client={client}>
                 <Provider store={store}>
                     <Component {...pageProps} />
                 </Provider>
