@@ -1,0 +1,37 @@
+.field.focussed input {
+    padding: 24px 16px 8px 16px;
+}
+.field.focussed input + label {
+    top: 4px;
+    opacity: 1;
+    color: #28cc70;
+}
+.field.locked {
+    pointer-events: none;
+}
+.field input {
+    position: relative;
+    border: none;
+    border-radius: 4px;
+    background-color: transparent;
+    outline: none;
+    transition: 0.3s background-color ease-in-out, 0.3s box-shadow ease-in-out,
+        0.1s padding ease-in-out;
+    -webkit-appearance: none;
+}
+.field input::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+.field input::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+.field input:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+.field input:-moz-placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
