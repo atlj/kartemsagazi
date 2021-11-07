@@ -69,9 +69,11 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         query: getPlaces,
     });
 
+    const copyData = [...data.places].sort((a, b) => a.order - b.order);
+
     return {
         props: {
-            places: data.places,
+            places: copyData,
         },
     };
 };
