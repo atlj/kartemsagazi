@@ -26,7 +26,7 @@ function PlacePage({ place }: Props) {
                 style={{ cursor: "pointer" }}
                 className="text-white w-9 h-9"
                 onClick={() => {
-                    Router.back();
+                    Router.push("/");
                 }}
             />
             <div className="relative w-72 h-52 self-center mt-6">
